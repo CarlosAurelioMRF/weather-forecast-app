@@ -9,5 +9,9 @@ export namespace LoadForecastCoordinates {
     latitude: number
     longitude: number
   }
-  export type Model = ForecastModel
+  export type Model = {
+    success: boolean
+    message?: string
+    data?: ForecastModel
+  }
 }

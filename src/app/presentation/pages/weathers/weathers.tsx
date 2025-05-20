@@ -16,17 +16,20 @@ import { CurrentWeather, SearchCity } from './components'
 const WeathersPage = () => {
   const { translate } = useTranslation('weathers')
   const { location, error: errorLocation } = useUserLocation()
-  const { forecast } = useAppSelector(getWeathertate)
+  const { forecastResult } = useAppSelector(getWeathertate)
   const { formatPercent } = useStringHelper()
 
   const [loadForecastByCoordinates, { isLoading, error: errorLoadingByCoordinates }] =
     useLazyLoadForecastByCoordinatesQuery()
 
-  const forecastDay = useMemo(() => forecast?.forecastDay ?? [], [forecast])
+  const forecastDay = useMemo(
+    () => forecastResult?.data?.forecastDay ?? [],
+    [forecastResult?.data?.forecastDay]
+  )
 
-  const error = useMemo(
-    () => errorLocation ?? errorLoadingByCoordinates,
-    [errorLocation, errorLoadingByCoordinates]
+  const errorMessage = useMemo(
+    () => errorLocation ?? errorLoadingByCoordinates?.message ?? forecastResult?.message,
+    [errorLocation, errorLoadingByCoordinates, forecastResult?.message]
   )
 
   const calculateHumidity = useCallback(
@@ -38,7 +41,8 @@ const WeathersPage = () => {
     if (!location) return
 
     loadForecastByCoordinates(location)
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location])
 
   return (
     <MDBox mt={1.5} pb={3}>
@@ -63,10 +67,10 @@ const WeathersPage = () => {
             </MDTypography>
           </MDBox>
 
-          {error && (
+          {errorMessage && (
             <MDAlert color='error' dismissible>
               <MDTypography variant='body2' color='white'>
-                {translate((error as { message: string }).message)}
+                {translate(errorMessage)}
               </MDTypography>
             </MDAlert>
           )}

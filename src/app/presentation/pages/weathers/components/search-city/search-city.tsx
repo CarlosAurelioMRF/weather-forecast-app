@@ -17,7 +17,7 @@ import { FormProvider } from '~/app/presentation/providers'
 
 const SearchCity = () => {
   const { translate } = useTranslation('weathers')
-  const { forecast } = useAppSelector(getWeathertate)
+  const { forecastResult } = useAppSelector(getWeathertate)
 
   const [loadForecastByCity, { isLoading, error: errorLoadingByCity }] =
     useLazyLoadForecastByCityQuery()
@@ -40,7 +40,10 @@ const SearchCity = () => {
                 </MDAlert>
               )}
 
-              <FormProvider defaultValues={{ cityName: forecast?.locationName }} mode='onBlur'>
+              <FormProvider
+                defaultValues={{ cityName: forecastResult?.data?.locationName }}
+                mode='onBlur'
+              >
                 {({ handleSubmit }) => (
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <MDBox p={3}>

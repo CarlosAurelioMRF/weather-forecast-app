@@ -19,7 +19,9 @@ export const weatherApi = apiSlice.injectEndpoints({
         dispatch(setForecast(response.data))
       },
       providesTags: (result): any =>
-        result ? [{ id: result.locationName, type: 'ForecastData' }] : ['PermissionsList'],
+        result?.data?.locationName
+          ? [{ id: result.data?.locationName, type: 'ForecastData' }]
+          : ['PermissionsList'],
     }),
     loadForecastByCoordinates: builder.query<
       LoadForecastCoordinates.Model,
@@ -32,7 +34,9 @@ export const weatherApi = apiSlice.injectEndpoints({
         dispatch(setForecast(response.data))
       },
       providesTags: (result): any =>
-        result ? [{ id: result.locationName, type: 'ForecastData' }] : ['PermissionsList'],
+        result?.data?.locationName
+          ? [{ id: result?.data?.locationName, type: 'ForecastData' }]
+          : ['PermissionsList'],
     }),
   }),
 })

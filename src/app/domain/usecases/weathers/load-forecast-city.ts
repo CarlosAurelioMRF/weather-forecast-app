@@ -6,5 +6,9 @@ export interface LoadForecastCity
 
 export namespace LoadForecastCity {
   export type Params = string
-  export type Model = ForecastModel
+  export type Model = {
+    success: boolean
+    message?: string
+    data?: ForecastModel
+  }
 }

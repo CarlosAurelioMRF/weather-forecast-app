@@ -1,4 +1,4 @@
-import { ForecastModel } from '~/app/domain/models'
+import { LoadForecastCity } from '~/app/domain/usecases'
 
 export const weatherSliceName = 'weatherSlice' as const
 
@@ -9,9 +9,9 @@ export const WEATHER_SLICE_ACTIONS = {
 } as const
 
 export const WEATHER_SLICE_INITIAL_STATE: WeatherSliceState = {
-  forecast: null,
+  forecastResult: null,
 }
 
 export type WeatherSliceState = {
-  forecast: ForecastModel
+  forecastResult: LoadForecastCity.Model
 }

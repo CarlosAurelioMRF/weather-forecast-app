@@ -1,4 +1,4 @@
-import { ReactNode, useCallback } from 'react'
+import { ReactNode, useCallback, useMemo } from 'react'
 import { Card, Grid, Icon } from '@mui/material'
 import { getWeathertate } from '~/store/features/weather'
 import { MDBox, MDTypography } from '~/app/presentation/components'
@@ -11,9 +11,11 @@ import {
 
 const CurrentWeather = () => {
   const { translate } = useTranslation('weathers')
-  const { forecast } = useAppSelector(getWeathertate)
+  const { forecastResult } = useAppSelector(getWeathertate)
   const { formatDate } = useDateHelper()
   const { formatPercent } = useStringHelper()
+
+  const forecast = useMemo(() => forecastResult?.data, [forecastResult?.data])
 
   const renderInfoCard = useCallback(
     (title: string, description: string, icon: string | ReactNode) => (
