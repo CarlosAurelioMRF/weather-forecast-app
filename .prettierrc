@@ -1,0 +1,31 @@
+{
+  "printWidth": 100,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": false,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "arrowParens": "always",
+  "importOrder": [
+    "^react$",
+    "^react-dom$",
+    "^react-hook-form$",
+    "^react-i18next$",
+    "^react-icons$",
+    "^react-redux$",
+    "^react-router-dom$",
+    "<THIRD_PARTY_MODULES>",
+    "^~/ioc/(.*)$",
+    "^~/store/(.*)$",
+    "^~/app/domain/(.*)$",
+    "^~/app/application/(.*)$",
+    "^~/app/infra/(.*)$",
+    "^~/app/main/(.*)$",
+    "^~/app/validation/(.*)$",
+    "^~/app/presentation/(.*)$",
+    "^[.]",
+    ".css$"
+  ],
+  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
+  "importOrderTypeScriptVersion": "5.0.0"
+}

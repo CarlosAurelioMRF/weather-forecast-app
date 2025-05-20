@@ -1,0 +1,9 @@
+{
+  "applicationName": "Clima Tempo",
+  "developerName": "Carlos Aurélio",
+  "actions": {
+    "settings": "Configurações",
+    "search": "Procurar",
+    "searching": "Procurando" 
+  }
+}

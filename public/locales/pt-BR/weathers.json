@@ -1,0 +1,11 @@
+{
+  "titlePage": "Previsão do Tempo",
+  "cityNameField": "Nome da Cidade", 
+  "dateField": "Data",
+  "conditionField": "Condição",
+  "avghumidityField": "Umidade Média",
+  "maxTempField": "Temperatura Máxima", 
+  "minTempField": "Temperatura Mínima", 
+  "humidity": "Umidade",
+  "temperature": "Temperatura"
+}

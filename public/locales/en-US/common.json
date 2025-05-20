@@ -1,0 +1,9 @@
+{
+  "applicationName": "Weather",
+  "developerName": "Carlos Aurélio",
+  "actions": {
+    "settings": "Settings",
+    "search": "Search",
+    "searching": "Searching" 
+  }
+}

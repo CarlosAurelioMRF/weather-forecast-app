@@ -1,0 +1,11 @@
+{
+  "titlePage": "Weather Forecast",
+  "cityNameField": "City Name",
+  "dateField": "Date",
+  "conditionField": "Condition",
+  "avghumidityField": "Average Humidity",
+  "maxTempField": "Max Temperature",
+  "minTempField": "Min Temperature", 
+  "humidity": "Humidity",
+  "temperature": "Temperature"
+}
