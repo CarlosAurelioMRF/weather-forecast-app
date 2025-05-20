@@ -6,6 +6,7 @@ import { ForecastDayModel } from '~/app/domain/models'
 import { DataTable, MDAlert, MDBox, MDTypography } from '~/app/presentation/components'
 import {
   useAppSelector,
+  useGateway,
   useLazyLoadForecastByCoordinatesQuery,
   useStringHelper,
   useTranslation,
@@ -15,6 +16,7 @@ import { CurrentWeather, SearchCity } from './components'
 
 const WeathersPage = () => {
   const { translate } = useTranslation('weathers')
+  const { userId } = useGateway()
   const { location, error: errorLocation } = useUserLocation()
   const { forecastResult } = useAppSelector(getWeathertate)
   const { formatPercent } = useStringHelper()
@@ -40,9 +42,9 @@ const WeathersPage = () => {
   useEffect(() => {
     if (!location) return
 
-    loadForecastByCoordinates(location)
+    loadForecastByCoordinates({ ...location, userId })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location])
+  }, [userId, location])
 
   return (
     <MDBox mt={1.5} pb={3}>

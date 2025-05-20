@@ -6,7 +6,7 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { container } from '~/ioc/inversify.config'
 import { store } from '~/store/store'
 import { FullPageLoading } from '~/app/presentation/components'
-import { ContainerProvider, ThemeProvider } from '~/app/presentation/providers'
+import { ContainerProvider, GatewayProvider, ThemeProvider } from '~/app/presentation/providers'
 import { RoutesConfig } from '../config/routes-config'
 import { makeRoutes } from '../factories/routes'
 
@@ -16,12 +16,14 @@ const Router: React.FC = () => (
   <ContainerProvider container={container}>
     <Suspense fallback={<FullPageLoading />}>
       <Provider store={store}>
-        <ThemeProvider>
-          <BrowserRouter>
-            <CssBaseline />
-            {makeRoutes(RoutesConfig)}
-          </BrowserRouter>
-        </ThemeProvider>
+        <GatewayProvider>
+          <ThemeProvider>
+            <BrowserRouter>
+              <CssBaseline />
+              {makeRoutes(RoutesConfig)}
+            </BrowserRouter>
+          </ThemeProvider>
+        </GatewayProvider>
       </Provider>
     </Suspense>
   </ContainerProvider>

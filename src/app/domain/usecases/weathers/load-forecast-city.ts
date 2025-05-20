@@ -5,7 +5,7 @@ export interface LoadForecastCity
   extends LoadFunction<LoadForecastCity.Model, LoadForecastCity.Params> {}
 
 export namespace LoadForecastCity {
-  export type Params = string
+  export type Params = { userId: string; cityName: string }
   export type Model = {
     success: boolean
     message?: string

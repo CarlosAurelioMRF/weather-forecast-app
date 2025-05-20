@@ -6,6 +6,7 @@ export interface LoadForecastCoordinates
 
 export namespace LoadForecastCoordinates {
   export type Params = {
+    userId: string
     latitude: number
     longitude: number
   }

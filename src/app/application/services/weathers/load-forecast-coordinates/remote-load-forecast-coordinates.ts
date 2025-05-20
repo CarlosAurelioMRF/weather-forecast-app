@@ -21,6 +21,9 @@ export class RemoteLoadForecastCoordinates implements LoadForecastCoordinates {
     const httpResponse = await this.httpClient.request({
       method: 'get',
       url: `${this.url}?latitude=${params.latitude}&longitude=${params.longitude}`,
+      headers: {
+        'x-user-id': params.userId,
+      },
     })
 
     const forecastOrError = RequestResponse.handle<LoadForecastCoordinates.Model>(httpResponse)

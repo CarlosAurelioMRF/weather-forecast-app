@@ -18,7 +18,10 @@ export class RemoteLoadForecastCity implements LoadForecastCity {
   async load(params: LoadForecastCity.Params): Promise<Response<LoadForecastCity.Model>> {
     const httpResponse = await this.httpClient.request({
       method: 'get',
-      url: `${this.url}?cityName=${params}`,
+      url: `${this.url}?cityName=${params.cityName}`,
+      headers: {
+        'x-user-id': params.userId,
+      },
     })
 
     const forecastOrError = RequestResponse.handle<LoadForecastCity.Model>(httpResponse)

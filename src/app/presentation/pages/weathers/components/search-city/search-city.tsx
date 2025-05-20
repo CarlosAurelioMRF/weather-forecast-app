@@ -10,6 +10,7 @@ import {
 } from '~/app/presentation/components'
 import {
   useAppSelector,
+  useGateway,
   useLazyLoadForecastByCityQuery,
   useTranslation,
 } from '~/app/presentation/hooks'
@@ -18,12 +19,13 @@ import { FormProvider } from '~/app/presentation/providers'
 const SearchCity = () => {
   const { translate } = useTranslation('weathers')
   const { forecastResult } = useAppSelector(getWeathertate)
+  const { userId } = useGateway()
 
   const [loadForecastByCity, { isLoading, error: errorLoadingByCity }] =
     useLazyLoadForecastByCityQuery()
 
   const onSubmit = (values: { cityName: string }) => {
-    loadForecastByCity(values.cityName)
+    loadForecastByCity({ ...values, userId })
   }
 
   return (
